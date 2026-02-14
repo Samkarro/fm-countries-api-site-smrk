@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Providers } from "./providers";
+import { Providers } from "./(common)/providers";
 
 export const metadata: Metadata = {
   title: "Where in the world?",
