@@ -1,3 +1,5 @@
+import "../../(styles)/country-card.styles.css";
+
 export default function ({
   flag,
   flagAlt,
