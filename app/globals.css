@@ -22,3 +22,17 @@ body {
   padding: 0;
   margin: 0;
 }
+
+header {
+  width: 100vw;
+  padding: 20px 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header p {
+  font-weight: 700;
+  font-size: larger;
+}
