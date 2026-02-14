@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { DataProvider } from "./data-provider";
 import "./(styles)/home.styles.css";
+import countryCard from "./(common)/(components)/country-card";
+import CountryCard from "./(common)/(components)/country-card";
 
 export default function Home() {
   const [countries, setCountries] = useState<any[]>([]);
@@ -42,7 +44,17 @@ export default function Home() {
       <div className="countries-container">
         {countries.map((element: any) => {
           console.log("entered");
-          return <div key={element.name.common}>{element.name.common}</div>;
+          return (
+            <CountryCard
+              key={element.name.common}
+              flag={element.flags.png}
+              flagAlt={element.flags.alt}
+              name={element.name.common}
+              capital={element.capital[0]}
+              region={element.region}
+              population={element.population}
+            />
+          );
         })}
       </div>
     </main>
