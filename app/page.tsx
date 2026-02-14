@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { DataProvider } from "./data-provider";
+import "./(styles)/home.styles.css";
 
 export default function Home() {
   const [countries, setCountries] = useState<any[]>([]);

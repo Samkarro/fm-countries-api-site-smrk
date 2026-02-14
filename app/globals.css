@@ -36,3 +36,10 @@ header p {
   font-weight: 700;
   font-size: larger;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem 60px;
+}

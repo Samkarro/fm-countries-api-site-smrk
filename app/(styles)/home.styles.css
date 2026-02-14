@@ -1,0 +1,14 @@
+.search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.countries-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+}
