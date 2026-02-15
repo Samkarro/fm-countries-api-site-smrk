@@ -42,6 +42,8 @@ header button {
   border: none;
   color: var(--foreground);
   font-size: 15px;
+}
+.clickable {
   cursor: pointer;
 }
 

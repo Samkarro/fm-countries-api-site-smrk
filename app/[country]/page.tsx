@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "../(styles)/country-detail.styles.css";
 import { useEffect, useState } from "react";
 import { DataProvider } from "../data-provider";
@@ -8,6 +8,7 @@ import { DataProvider } from "../data-provider";
 export default function CountryDetail() {
   const [country, setCountry] = useState<any[]>();
   const [borders, setBorders] = useState<string[]>([]);
+  const router = useRouter();
 
   let pathname = usePathname();
   pathname = pathname.toLowerCase();
@@ -39,7 +40,7 @@ export default function CountryDetail() {
     <div className="details-page-wrapper">
       {country && (
         <div className="details-page">
-          <div className="back-button">
+          <div className="back-button clickable" onClick={() => router.back()}>
             <img className="back-arrow" />
             Back
           </div>
