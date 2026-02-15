@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { DataProvider } from "./data-provider";
 import "./(styles)/home.styles.css";
+import CountryCard from "./(common)/(components)/country-card";
+import CustomDropdown from "./(common)/(components)/custom-dropdown";
 
 export default function Home() {
   const [countries, setCountries] = useState<any[]>([]);
@@ -10,7 +12,6 @@ export default function Home() {
     const loadCountries = async () => {
       const data = await DataProvider.getAllCountries();
       setCountries(data);
-      console.log("useEffect");
     };
 
     loadCountries();
@@ -27,22 +28,21 @@ export default function Home() {
           type="text"
           placeholder="Search for a country..."
         />
-        <label htmlFor="region" hidden>
-          Filter by region.
-        </label>
-        <select name="region">
-          <option value="filter-by">Filter by Region</option>
-          <option value="africa">Africa</option>
-          <option value="america">America</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
-        </select>
+        <CustomDropdown />
       </div>
       <div className="countries-container">
         {countries.map((element: any) => {
-          console.log("entered");
-          return <div key={element.name.common}>{element.name.common}</div>;
+          return (
+            <CountryCard
+              key={element.name.common}
+              flag={element.flags.png}
+              flagAlt={element.flags.alt}
+              name={element.name.common}
+              capital={element.capital[0]}
+              region={element.region}
+              population={element.population}
+            />
+          );
         })}
       </div>
     </main>

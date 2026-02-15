@@ -1,0 +1,37 @@
+.country-card {
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.06);
+  background-color: var(--background-light);
+  border-radius: 5px;
+}
+
+.country-card-flag {
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.country-card-text-container {
+  padding: 1.5rem;
+}
+
+.country-card-text-container h2 {
+  font-size: larger;
+  margin-bottom: 16px;
+}
+
+.country-card-subdata {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.country-card-subdata p {
+  font-size: 14px;
+}
+
+.country-card-subdata b {
+  font-weight: 700;
+}

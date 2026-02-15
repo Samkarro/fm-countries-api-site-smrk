@@ -12,3 +12,18 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 4rem;
 }
+
+input {
+  border: none;
+  height: 56px;
+  width: 525px;
+  background-color: var(--background-light);
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  padding: 20px;
+  color: var(--foreground);
+}
+
+input::placeholder {
+  color: gray;
+}
