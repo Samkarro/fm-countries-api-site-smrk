@@ -87,20 +87,37 @@ export default function CountryDetail() {
                 </p>
                 <div className="languages-container">
                   <b>Languages: </b>
-                  {Object.keys(country[0].languages).map((language) => {
-                    return <p key={language}>{language}</p>;
+                  {Object.keys(country[0].languages).map((language, index) => {
+                    if (
+                      index ===
+                      Object.keys(country[0].languages).length - 1
+                    ) {
+                      return (
+                        <p key={language}>{country[0].languages[language]}</p>
+                      );
+                    }
+
+                    return (
+                      <p key={language}>{country[0].languages[language]}, </p>
+                    );
                   })}
                 </div>
               </div>
               <div className="border-countries-container">
                 <b>Border Countries: </b>
-                {borders.map((border, index) => {
-                  return (
-                    <div className="border-card" key={index}>
-                      {border}
-                    </div>
-                  );
-                })}
+                {borders.length != 0 ? (
+                  borders.map((border, index) => {
+                    return (
+                      <div className="border-card" key={index}>
+                        {border}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <div className="border-card">None</div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
