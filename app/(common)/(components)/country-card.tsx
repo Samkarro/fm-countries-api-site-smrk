@@ -7,6 +7,7 @@ export default function ({
   capital,
   region,
   population,
+  code,
 }: {
   flag: string;
   flagAlt: string;
@@ -14,29 +15,32 @@ export default function ({
   capital: string;
   region: string;
   population: number;
+  code: string;
 }) {
   return (
-    <div className="country-card">
-      <div className="country-card-flag-container">
-        <img className="country-card-flag" src={flag} alt={flagAlt} />
-      </div>
-      <div className="country-card-text-container">
-        <h2>{name}</h2>
-        <div className="country-card-subdata">
-          <p>
-            <b>Population: </b>
-            {population}
-          </p>
-          <p>
-            <b>Region: </b>
-            {region}
-          </p>
-          <p>
-            <b>Capital: </b>
-            {capital}
-          </p>
+    <a className="country-card-anchor-wrapper" href={`/${code}`}>
+      <div className="country-card">
+        <div className="country-card-flag-container">
+          <img className="country-card-flag" src={flag} alt={flagAlt} />
+        </div>
+        <div className="country-card-text-container">
+          <h2>{name}</h2>
+          <div className="country-card-subdata">
+            <p>
+              <b>Population: </b>
+              {population}
+            </p>
+            <p>
+              <b>Region: </b>
+              {region}
+            </p>
+            <p>
+              <b>Capital: </b>
+              {capital}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 }

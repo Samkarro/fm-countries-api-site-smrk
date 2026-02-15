@@ -35,3 +35,8 @@
 .country-card-subdata b {
   font-weight: 700;
 }
+
+.country-card-anchor-wrapper {
+  text-decoration: none;
+  color: inherit;
+}

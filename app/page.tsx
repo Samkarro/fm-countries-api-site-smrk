@@ -41,6 +41,7 @@ export default function Home() {
               capital={element.capital[0]}
               region={element.region}
               population={element.population}
+              code={element.cca3}
             />
           );
         })}
