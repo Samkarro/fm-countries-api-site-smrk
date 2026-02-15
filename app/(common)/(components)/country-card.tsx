@@ -7,6 +7,7 @@ export default function ({
   capital,
   region,
   population,
+  code,
 }: {
   flag: string;
   flagAlt: string;
@@ -14,9 +15,10 @@ export default function ({
   capital: string;
   region: string;
   population: number;
+  code: string;
 }) {
   return (
-    <a className="country-card-anchor-wrapper" href={`/${name}`}>
+    <a className="country-card-anchor-wrapper" href={`/${code}`}>
       <div className="country-card">
         <div className="country-card-flag-container">
           <img className="country-card-flag" src={flag} alt={flagAlt} />

@@ -2,9 +2,26 @@
 
 import { usePathname } from "next/navigation";
 import "../(styles)/country-detail.styles.css";
+import { useEffect, useState } from "react";
+import { DataProvider } from "../data-provider";
 
-export default function CountryDetail({ country }: { country: string }) {
-  const pathname = usePathname();
+export default function CountryDetail() {
+  const [country, setCountry] = useState();
 
-  return <p className="test">{country}</p>;
+  let pathname = usePathname();
+  pathname = pathname.toLowerCase();
+  pathname = pathname.replace("/", "");
+
+  useEffect(() => {
+    const loadCountry = async () => {
+      const data = await DataProvider.getByName(pathname);
+      setCountry(data);
+    };
+
+    loadCountry();
+  }, []);
+
+  return (
+    <div>{country && <p className="test">{country[0].name.common}</p>}</div>
+  );
 }
