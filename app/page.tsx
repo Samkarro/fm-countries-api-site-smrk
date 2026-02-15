@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { DataProvider } from "./data-provider";
 import "./(styles)/home.styles.css";
-import countryCard from "./(common)/(components)/country-card";
 import CountryCard from "./(common)/(components)/country-card";
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
     const loadCountries = async () => {
       const data = await DataProvider.getAllCountries();
       setCountries(data);
-      console.log("useEffect");
     };
 
     loadCountries();
@@ -43,7 +41,6 @@ export default function Home() {
       </div>
       <div className="countries-container">
         {countries.map((element: any) => {
-          console.log("entered");
           return (
             <CountryCard
               key={element.name.common}
