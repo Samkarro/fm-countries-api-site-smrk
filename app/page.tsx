@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { DataProvider } from "./data-provider";
 import "./(styles)/home.styles.css";
 import CountryCard from "./(common)/(components)/country-card";
+import CustomDropdown from "./(common)/(components)/custom-dropdown";
 
 export default function Home() {
   const [countries, setCountries] = useState<any[]>([]);
@@ -27,17 +28,7 @@ export default function Home() {
           type="text"
           placeholder="Search for a country..."
         />
-        <label htmlFor="region" hidden>
-          Filter by region.
-        </label>
-        <select name="region">
-          <option value="filter-by">Filter by Region</option>
-          <option value="africa">Africa</option>
-          <option value="america">America</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
-        </select>
+        <CustomDropdown />
       </div>
       <div className="countries-container">
         {countries.map((element: any) => {
