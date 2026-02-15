@@ -36,7 +36,7 @@ export default function CountryDetail() {
   }, [pathname]);
 
   return (
-    <div>
+    <div className="details-page-wrapper">
       {country && (
         <div className="details-page">
           <div className="back-button">

@@ -1,4 +1,13 @@
-.test {
-  color: var(--foreground);
-  font-size: 100px;
+.details-page-wrapper {
+  padding: 0px 60px;
+}
+
+.back-button {
+  margin: 3.5rem 0rem;
+  padding: 0.5rem 2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  width: min-content;
+
+  font-size: 0.9rem;
 }
