@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { DataProvider } from "../data-provider";
 
 export default function CountryDetail() {
-  const [country, setCountry] = useState();
+  const [country, setCountry] = useState<any[]>();
+  const [borders, setBorders] = useState<string[]>([]);
 
   let pathname = usePathname();
   pathname = pathname.toLowerCase();
@@ -16,10 +17,23 @@ export default function CountryDetail() {
     const loadCountry = async () => {
       const data = await DataProvider.getByName(pathname);
       setCountry(data);
+
+      if (!data[0].borders) return;
+
+      const borderCountries = await Promise.all(
+        data[0].borders.map((code: string) => DataProvider.getName(code)),
+      );
+
+      const borderNames: string[] = [];
+      borderCountries.forEach((element) => {
+        borderNames.push(element[0].name.common);
+      });
+
+      setBorders(borderNames);
     };
 
     loadCountry();
-  }, []);
+  }, [pathname]);
 
   return (
     <div>
@@ -71,14 +85,24 @@ export default function CountryDetail() {
                       .name
                   }
                 </p>
-                <p className="languages-container">
+                <div className="languages-container">
                   <b>Languages: </b>
                   {Object.keys(country[0].languages).map((language) => {
-                    return <p>{language}</p>;
+                    return <p key={language}>{language}</p>;
                   })}
-                </p>
+                </div>
               </div>
             </div>
+          </div>
+          <div className="border-countries-container">
+            <b>Border Countries: </b>
+            {borders.map((border, index) => {
+              return (
+                <div className="border-card" key={index}>
+                  {border}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

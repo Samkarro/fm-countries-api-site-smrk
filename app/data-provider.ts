@@ -12,4 +12,11 @@ export const DataProvider = {
     );
     return response.json();
   },
+
+  getName: async (code: string) => {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${code}?filter=name`,
+    );
+    return response.json();
+  },
 };
