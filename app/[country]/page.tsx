@@ -43,12 +43,12 @@ export default function CountryDetail() {
             <img className="back-arrow" />
             Back
           </div>
-          <div className="">
-            <img src={country[0].flags.png} />
+          <div className="country-info">
+            <img className="country-detail-flag" src={country[0].flags.png} />
             <div className="detail-text-container">
               <h1>{country[0].name.common}</h1>
-              <div className="detail-text"></div>
-              <div className="border-countries-container">
+
+              <div className="detail-text">
                 <p>
                   <b>Native Name: </b>
                   {
@@ -92,17 +92,17 @@ export default function CountryDetail() {
                   })}
                 </div>
               </div>
+              <div className="border-countries-container">
+                <b>Border Countries: </b>
+                {borders.map((border, index) => {
+                  return (
+                    <div className="border-card" key={index}>
+                      {border}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div className="border-countries-container">
-            <b>Border Countries: </b>
-            {borders.map((border, index) => {
-              return (
-                <div className="border-card" key={index}>
-                  {border}
-                </div>
-              );
-            })}
           </div>
         </div>
       )}
