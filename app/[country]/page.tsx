@@ -22,6 +22,66 @@ export default function CountryDetail() {
   }, []);
 
   return (
-    <div>{country && <p className="test">{country[0].name.common}</p>}</div>
+    <div>
+      {country && (
+        <div className="details-page">
+          <div className="back-button">
+            <img className="back-arrow" />
+            Back
+          </div>
+          <div className="">
+            <img src={country[0].flags.png} />
+            <div className="detail-text-container">
+              <h1>{country[0].name.common}</h1>
+              <div className="detail-text"></div>
+              <div className="border-countries-container">
+                <p>
+                  <b>Native Name: </b>
+                  {
+                    country[0].name.nativeName[
+                      // getting the native name in native language
+                      Object.keys(country[0].name.nativeName)[0]
+                    ].common
+                  }
+                </p>
+                <p>
+                  <b>Population: </b>
+                  {country[0].population}
+                </p>
+                <p>
+                  <b>Region: </b>
+                  {country[0].region}
+                </p>
+                <p>
+                  <b>Sub Region: </b>
+                  {country[0].subregion}
+                </p>
+                <p>
+                  <b>Capital: </b>
+                  {country[0].capital[0]}
+                </p>
+                <p>
+                  <b>Top Level Domain: </b>
+                  {country[0].tld[0]}
+                </p>
+                <p>
+                  <b>Currencies: </b>
+                  {
+                    country[0].currencies[Object.keys(country[0].currencies)[0]]
+                      .name
+                  }
+                </p>
+                <p className="languages-container">
+                  <b>Languages: </b>
+                  {Object.keys(country[0].languages).map((language) => {
+                    return <p>{language}</p>;
+                  })}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
