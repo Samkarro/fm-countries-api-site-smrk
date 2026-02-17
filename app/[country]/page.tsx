@@ -73,7 +73,9 @@ export default function CountryDetail() {
                 </p>
                 <p>
                   <b>Capital: </b>
-                  {country[0].capital[0]}
+                  {country[0].capital !== undefined
+                    ? country[0].capital[0]
+                    : "N/A"}
                 </p>
                 <p>
                   <b>Top Level Domain: </b>
@@ -81,10 +83,11 @@ export default function CountryDetail() {
                 </p>
                 <p>
                   <b>Currencies: </b>
-                  {
-                    country[0].currencies[Object.keys(country[0].currencies)[0]]
-                      .name
-                  }
+                  {country[0].currencies !== undefined
+                    ? country[0].currencies[
+                        Object.keys(country[0].currencies)[0]
+                      ].name
+                    : "N/A"}
                 </p>
                 <div className="languages-container">
                   <b>Languages: </b>
