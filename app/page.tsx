@@ -8,6 +8,7 @@ import CustomDropdown from "./(common)/(components)/custom-dropdown";
 export default function Home() {
   const [countries, setCountries] = useState<any[]>([]);
   const [filter, setFilter] = useState<string>("Filter by Region");
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const loadCountries = async () => {
@@ -17,6 +18,17 @@ export default function Home() {
 
     loadCountries();
   }, []);
+
+  const filteredCountries = countries.filter((country) => {
+    const matchesRegion =
+      filter === "Filter by Region" || country.region === filter;
+
+    const matchesSearch = country.name.common
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    return matchesRegion && matchesSearch;
+  });
 
   return (
     <main>
@@ -28,41 +40,24 @@ export default function Home() {
           name="search"
           type="text"
           placeholder="Search for a country..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <CustomDropdown setFilter={setFilter} />
       </div>
       <div className="countries-container">
-        {filter === "Filter by Region"
-          ? countries.map((element: any) => {
-              return (
-                <CountryCard
-                  key={element.name.common}
-                  flag={element.flags.png}
-                  flagAlt={element.flags.alt}
-                  name={element.name.common}
-                  capital={element.capital[0]}
-                  region={element.region}
-                  population={element.population}
-                  code={element.cca3}
-                />
-              );
-            })
-          : countries.map((element: any) => {
-              if (element.region === filter) {
-                return (
-                  <CountryCard
-                    key={element.name.common}
-                    flag={element.flags.png}
-                    flagAlt={element.flags.alt}
-                    name={element.name.common}
-                    capital={element.capital[0]}
-                    region={element.region}
-                    population={element.population}
-                    code={element.cca3}
-                  />
-                );
-              }
-            })}
+        {filteredCountries.map((element: any) => (
+          <CountryCard
+            key={element.name.common}
+            flag={element.flags.png}
+            flagAlt={element.flags.alt}
+            name={element.name.common}
+            capital={element.capital[0]}
+            region={element.region}
+            population={element.population}
+            code={element.cca3}
+          />
+        ))}
       </div>
     </main>
   );
