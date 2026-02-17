@@ -5,18 +5,19 @@ import "./../../(styles)/custom-dropdown.styles.css";
 const regions = [
   "Filter by Region",
   "Africa",
-  "America",
+  "Americas",
   "Asia",
   "Europe",
   "Oceania",
 ];
 
-export default function CustomDropdown() {
+export default function CustomDropdown({ setFilter }: { setFilter: Function }) {
   const [selected, setSelected] = useState<string | null>("Filter by Region");
   const [open, setOpen] = useState(false);
 
   const handleSelect = (region: string) => {
     setSelected(region);
+    setFilter(region);
     setOpen(false);
   };
 
