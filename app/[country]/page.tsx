@@ -71,7 +71,7 @@ export default function CountryDetail() {
                   <b>Sub Region: </b>
                   {country[0].subregion}
                 </p>
-                <p>
+                <p className="m-bottom">
                   <b>Capital: </b>
                   {country[0].capital !== undefined
                     ? country[0].capital[0]
