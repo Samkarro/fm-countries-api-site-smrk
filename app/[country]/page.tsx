@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "../(styles)/country-detail.styles.css";
 import { useEffect, useState } from "react";
 import { DataProvider } from "../data-provider";
@@ -8,6 +8,7 @@ import { DataProvider } from "../data-provider";
 export default function CountryDetail() {
   const [country, setCountry] = useState<any[]>();
   const [borders, setBorders] = useState<string[]>([]);
+  const router = useRouter();
 
   let pathname = usePathname();
   pathname = pathname.toLowerCase();
@@ -39,7 +40,7 @@ export default function CountryDetail() {
     <div className="details-page-wrapper">
       {country && (
         <div className="details-page">
-          <div className="back-button">
+          <div className="back-button clickable" onClick={() => router.back()}>
             <img className="back-arrow" />
             Back
           </div>
@@ -70,9 +71,11 @@ export default function CountryDetail() {
                   <b>Sub Region: </b>
                   {country[0].subregion}
                 </p>
-                <p>
+                <p className="m-bottom">
                   <b>Capital: </b>
-                  {country[0].capital[0]}
+                  {country[0].capital !== undefined
+                    ? country[0].capital[0]
+                    : "N/A"}
                 </p>
                 <p>
                   <b>Top Level Domain: </b>
@@ -80,10 +83,11 @@ export default function CountryDetail() {
                 </p>
                 <p>
                   <b>Currencies: </b>
-                  {
-                    country[0].currencies[Object.keys(country[0].currencies)[0]]
-                      .name
-                  }
+                  {country[0].currencies !== undefined
+                    ? country[0].currencies[
+                        Object.keys(country[0].currencies)[0]
+                      ].name
+                    : "N/A"}
                 </p>
                 <div className="languages-container">
                   <b>Languages: </b>

@@ -14,18 +14,18 @@
 
 .country-card-text-container {
   padding: 1.5rem;
+  min-height: 12rem;
 }
 
 .country-card-text-container h2 {
   font-size: larger;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .country-card-subdata {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 1.5rem;
+  gap: 10px;
 }
 
 .country-card-subdata p {
@@ -39,4 +39,34 @@
 .country-card-anchor-wrapper {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 720px) {
+  .country-card-flag {
+    height: 16rem;
+  }
+
+  .country-card-text-container {
+    padding: 1.8rem;
+    min-height: 16rem;
+  }
+
+  .country-card-subdata p {
+    font-size: 20px;
+  }
+
+  .country-card-subdata b {
+    font-weight: 700;
+  }
+
+  .country-card-text-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  .country-card-subdata {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
